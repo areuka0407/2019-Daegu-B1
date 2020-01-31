@@ -1,48 +1,61 @@
-@charset "UTF-8";
+/* About
+*/
 
-#visual {
-    height: 500px;
-    position: relative;
+
+#about .about-item {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #525252;
 }
 
-#visual::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image: url(../images/slide1.jpg);
-    background-size: cover;
-    background-position: left 40%;
-    filter: brightness(50%);
-}
-
-#visual > div {
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 70px 140px;
-}
-
-#visual > div::before, #visual >div::after {
-    content: '';
-    position: absolute; left: 0; 
-    width: 100%; height: 30%;
-    border-style: solid;
-    border-color: #fff;
-}
-
-#visual > div::before { border-width: 1px 1px 0 1px; top: 0; }
-
-#visual > div::after { border-width: 0 1px 1px 1px; bottom: 0; }
-
-#visual h5 {
+#about .about-item dt {
     margin-bottom: 5px;
-    color: #ddd;
 }
 
-#visual h1 {
-    color: var(--main);
-    font-weight: 900;
-    font-size: 3em;
+#about .about-item dd {
+    margin-bottom: 20px;
 }
+
+/* Sponsor
+*/
+
+
+#sponsor .list {
+    width: 100%; height: 600px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 50px;
+}
+
+#sponsor .image {
+    min-width: 50px; min-height: 50px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+    cursor: pointer;
+}
+
+#sponsor .image:hover {
+    filter: grayscale(0%);
+}
+
+#sponsor .image:nth-child(1){ background-image: url(../images/sponsors/instantlogosearch-alipay.png); }
+#sponsor .image:nth-child(2){ background-image: url(../images/sponsors/instantlogosearch-fila.png); }
+#sponsor .image:nth-child(3){ background-image: url(../images/sponsors/instantlogosearch-nike.png); }
+#sponsor .image:nth-child(4){ background-image: url(../images/sponsors/instantlogosearch-pepsi.png); }
+#sponsor .image:nth-child(5){ background-image: url(../images/sponsors/instantlogosearch-starbucks.png); }
+#sponsor .image:nth-child(6){ background-image: url(../images/sponsors/instantlogosearch-twitter.png); }
+#sponsor .image:nth-child(7){ background-image: url(../images/sponsors/instantlogosearch-walmart-2.png); }
+#sponsor .image:nth-child(8){ background-image: url(../images/sponsors/instantlogosearch-wechat.png); }
+#sponsor .image:nth-child(9){ background-image: url(../images/sponsors/logomono-alibaba-mono.png); }
+#sponsor .image:nth-child(10){ background-image: url(../images/sponsors/logomono-china-mobile-mono.png); }
+#sponsor .image:nth-child(11){ background-image: url(../images/sponsors/logomono-disney-mono.png); }
+#sponsor .image:nth-child(12){ background-image: url(../images/sponsors/logomono-huawei-mono.png); }
+#sponsor .image:nth-child(13){ background-image: url(../images/sponsors/logomono-intel-mono.png); }
+#sponsor .image:nth-child(14){ background-image: url(../images/sponsors/instantlogosearch-adidas.png); }
+#sponsor .image:nth-child(15){ background-image: url(../images/sponsors/instantlogosearch-coca-cola.png); }
