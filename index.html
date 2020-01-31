@@ -4,122 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <title>부산국제영화제</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="stylesheet" href="fontawesome/js/all.js">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/index.css">
+    <script src="fontawesome/js/all.js" src="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="wrap">
-        <div id="visual">
-            <div>
-                <h1>Welcome to <span class="accent">BIFF 2020</span></h1>
+    <!-- 헤더 영역 -->
+    <header>
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="#" id="logo">
+                <img src="images/logo.png" title="부산국제영화제" alt="부산국제영화제" height="80">
+            </a>
+            <div class="nav">
+                <a class="item active" href="#">부산국제영화제</a>
+                <a class="item" href="#">영화제 소개</a>
+                <a class="item" href="#">상영 요청</a>
+                <a class="item" href="#">상영작 예매</a>
+            </div>
+            <div class="sub-nav">
+                <a href="#" class="item">관리자 접속</a>
             </div>
         </div>
-        <header class="scroll-exception">
-            <div class="container d-flex justify-content-between align-items-center h-100">
-                <a href="index.html" id="logo">
-                    <img src="images/Wlogo.png" alt="부산국제영화제" height="70">
-                </a>
-                <nav>
-                    <a href="index.html">BIFF 2020</a>
-                    <a href="#">영화제 소개</a>
-                    <a href="#">상영 요청</a>
-                    <a href="#">상영작 예매</a>
-                </nav>
-                <div class="admin-nav">
-                    <a href="#">관리자 접속</a>
-                </div>
-            </div>
-        </header>
-        <div class="header-line scroll-exception"></div>
-        <div id="about">
-            <div class="container padding">
-                <div class="row">
-                    <div class="about-item col-md-6 col-sm-12">
-                        <div class="section-title">
-                            <span class="behind">A</span>
-                            <h1>About <span class="accent">BIFF</span></h1>
-                        </div>
-                    </div>
-                    <div class="about-item col-md-6 col-sm-12">
-                        <dl>
-                            <dt>가을마다 찾아오는 국제영화제</dt>
-                            <dd>부산국제영화제는 매년 가을 대한민국 부산광역시 영화의전당 일원에서 개최되는 국제영화제다.</dd>
-                            <dt>아시아 최대 규모의 영화제</dt>
-                            <dd>도쿄, 홍콩국제영화제와 더불어 아시아 최대 규모의 영화제다.</dd>
-                            <dt>FIAPF 공인 영화제</dt>
-                            <dd>부분경쟁을 도입한 비경쟁영화제로 국제영화제작자연맹(FIAPF)의 공인을 받은 영화제이다.</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
+    </header>
+    <!-- 비쥬얼 영역 -->
+    <div id="visual">
+        <div>
+            <h1>BIFF <span>2020</span></h1>
+            <p class="description">
+                <span>세계적인 배우들</span>과 <span>세기의 명작</span>을 동시에 볼 수 있는 절호의 기회!<br>
+                부산에서 아시아 최대 규모의 영화제를 접해 보세요.
+            </p>
+            <a href="about.html">자세히 보기</a>
         </div>
-        <div id="sponsor">
-            <div class="container padding">
-                <div class="row align-items-center">
-                    <div class="sponsor-item col-md-8 col-sm-12">
-                        <div class="list">
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                            <div class="image"></div>
-                        </div>
-                    </div>
-                    <div class="sponsor-item col-md-4 col-sm-12">
-                        <div class="section-title">
-                            <span class="behind">S</span>
-                            <h1><span class="accent text-sub">Sponsor</span></h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <div class="container">
-                <div class="d-flex justify-content-center mb-4">
-                    <a class="text-white mx-4" href="index.html">BIFF 2020</a>
-                    <a class="text-white mx-4" href="#">영화제 소개</a>
-                    <a class="text-white mx-4" href="#">상영 요청</a>
-                    <a class="text-white mx-4" href="#">상영작 예매</a>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 d-flex flex-column align-items-center">
-                        <a href="index.html">
-                            <img src="images/Wlogo.png" alt="부산국제영화제" height="80">
-                        </a>
-                        <div class="mt-4 d-flex w-100 justify-content-center align-items-center">
-                            <img class="mx-3" src="images/sotials/facebook.png" alt="Facebook" width="50" height="50">
-                            <img class="mx-3" src="images/sotials/naver blog.png" alt="Twitter" width="50" height="50">
-                            <img class="mx-3" src="images/sotials/kakaotalk.png" alt="Kakao Talk" width="50" height="50">
-                        </div>
-                    </div>
-                    <div class="col-md-8 p-4">
-                        <p class="text-white">부산사무국(48058) 부산시 해운대구 수영강변대로 120 영화의전당 비프힐 3층</p>
-                        <p class="text-white">
-                            <i class="mr-2 fa fa-phone"></i> 전화 1688-3010 
-                            <i class="mr-2 fa fa-fax ml-4"></i> 팩스 051-709-2299
-                        </p>
-                        <p class="text-white">ⓒ Busan International Film Festival</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
+    <!-- 소개 영역 -->
+    <div id="about">
+        <div class="container padding">
+            <div class="section-title">
+                <span class="behind">A</span>
+                <h1>About <span class="accent">BIFF</span></h1>
+            </div>
+            <p class="text-center mt-5">
+                부산국제영화제는 1996년 제 1회를 시작으로 2020년 제 25회를 맞이하게 되었습니다.<br>
+                오늘날에 이르러선 부산 지역을 넘어 한국 영화계의 최대 축제가 되었습니다.
+            </p>
+            <div class="list">
+                <div class="item">
+                    <b class="title">매 가을마다, 영화의 전당에서!</b>
+                    <p class="contents mt-4">
+                        부산국제영화제는 매년 가을 대한민국 부산광역시<br> 
+                        영화의전당 일원에서 개최되는 국제영화제다. 
+                    </p>
+                </div>
+                <div class="item">
+                    <b class="title">아시아 최대 규모 영화제</b>
+                    <p class="contents mt-4">
+                        도쿄, 홍콩국제영화제와 더불어<br>
+                        아시아 최대 규모의 영화제다.
+                    </p>
+                </div>
+                <div class="item">
+                    <b class="title">FIAPF가 공인한 비경쟁영화제</b>
+                    <p class="contents mt-4">
+                        부분경쟁을 도입한 비경쟁영화제로<br>
+                        국제영화제작자연맹(FIAPF)의 공인을 받은 영화제이다
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="sponsor">
+        <div class="container-fluid padding">
+            <div class="sub-title">
+                <h1>Sponsor of Festival</h1>
+            </div>
+            <div class="list">
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container py-5">
+            <div class="row align-items-start">
+                <div class="col-md-3">
+                    <a href="index.html">
+                        <img src="./images/Wlogo.png" title="부산국제영화제" alt="부산국제영화제" height="80">
+                    </a>
+                </div>
+                <div class="links col-sm-12 col-md-3">
+                    <h5 class="title">바로가기</h5>
+                    <div class="list">
+                        <div class="item">
+                            <i class="left-icon"></i>
+                            <span>부산국제영화제</span>
+                        </div>
+                        <div class="item">
+                            <i class="left-icon"></i>
+                            <span>영화제 소개</span>
+                        </div>
+                        <div class="item">
+                            <i class="left-icon"></i>
+                            <span>상영 요청</span>
+                        </div>
+                        <div class="item">
+                            <i class="left-icon"></i>
+                            <span>상영작 예매</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sotial col-sm-12 col-md-3">
+                    <h5 class="title">공유하기</h5>
+                    <div class="list">
+                        <div class="item">
+                            <img src="images/sotials/W-facebook.png" alt="페이스북으로 공유하기" title="페이스북으로 공유하기" height="30">
+                            <span>페이스북으로 공유하기</span>
+                        </div>
+                        <div class="item">
+                            <img src="images/sotials/W-twitter.png" alt="트위터로 공유하기" title="트위터로 공유하기" height="30">
+                            <span>트위터로 공유하기</span>
+                        </div>
+                        <div class="item">
+                            <img src="images/sotials/W-google.png" alt="구글플러스로 공유하기" title="구글플러스로 공유하기" height="30">
+                            <span>구글플러스로 공유하기</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="other col-sm-12 col-md-3">
+                    <h5 class="title">문의하기</h5>
+                    <div class="item">
+                        전화 1688-3010<br>
+                        팩스 051-709-2299
+                    </div>
+                    <h5 class="title mt-3">오시는 길</h5>
+                    <div class="item">
+                        부산사무국(48058) 부산시 해운대구 수영강변대로 120
+                        영화의전당 비프힐 3층 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right">
+            ⓒ Busan International Film Festival
+        </div>
+    </footer>
 </body>
 </html>
