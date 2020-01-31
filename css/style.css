@@ -4,6 +4,8 @@
     --header-height: 80px;
     --main: #2cad91;
     --sub: #2d9eb8;
+    --blue: #0086ca;
+    --darkblue: #343841;
     --font-english: Segoe UI, sans-serif;
 }
 
@@ -26,13 +28,17 @@ ol, ul { list-style: none; }
     padding: 50px 0 80px;
 }
 
-i.left-icon {
+i.right-icon {
     display: inline-block;
     width: 15px;
     height: 15px;
     background-size: cover;
     background-position: center center;
     background-image: url(../images/left.svg);
+}
+
+i.right-icon.white {
+    filter: grayscale(100%) brightness(200%);
 }
 
 
@@ -134,7 +140,7 @@ header {
     top: 0; left: 0;
     width: 100%; height: 100%;
     filter: brightness(50%);
-    box-shadow: inset 0 0 70px 50px #000000;
+    box-shadow: inset 0 0 70px 50px #000000aa;
 }
 
 #visual::after {
@@ -142,11 +148,12 @@ header {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: var(--black);
-    opacity: 0.4;
+    background-color: var(--darkblue);
+    opacity: 0.6;
 }
 
-#visual > div {
+#visual > .main, #visual > .sub
+{
     z-index: 1;
     position: relative;
     top: 150px;
@@ -154,24 +161,27 @@ header {
     margin: 0 auto;
     color: #fff;
 }
-#visual h1 { 
+#visual .main h1 { 
     margin-bottom: 0.8em;
     font-size: 3em;
     font-family: var(--font-english);
     font-weight: lighter;
 }
-#visual h1 span {
+#visual .main h1 span {
     font-family: var(--font-english);
     font-weight: bold;
 }
 
-#visual .description {
+#visual .main .description {
     color: #fffd;
     font-weight: normal;
 }
 
-#visual .description span { font-weight: bolder; font-size: 1.1em; }
-#visual a {
+#visual .main .description span {
+    font-weight: bolder; font-size: 1.1em; margin-right: 0.2em; 
+}
+
+#visual .main a {
     margin-top: 30px;
     display: inline-block;
     padding: 10px 20px;
@@ -179,10 +189,22 @@ header {
     font-weight: 900;
 }
 
-#visual a:hover {
+#visual .main a:hover {
     text-decoration: none;
     background-color: #fff;
     color: var(--sub);
+}
+
+#visual .sub h5 {
+    font-family: var(--font-english);
+    font-size: 1.1em;
+    font-size: normal;
+    color: #ccc;
+}
+
+#visual .sub h5 .home {
+    font-weight: bold;
+    color: #fff;
 }
 
 /* Footer
@@ -200,7 +222,7 @@ footer .title {
     color: #fff; font-weight: bold;
     font-size: 1.1em; margin-bottom: 15px;
 }
-footer span {
+footer span, footer a {
     display: inline-block; 
     margin-left: 20px;
 }
@@ -265,41 +287,30 @@ footer .copy-right {
 */
 
 #sponsor .list {
+    width: 100%;
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, calc(100% / 7));
     grid-auto-rows: 100px;
 }
 
 #sponsor .list .image {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-origin: content-box;
     padding: 20px;
     border-right: 1px dashed #afafaf;
     border-bottom: 1px dashed #afafaf;
     filter: grayscale(100%);
     transition: filter 0.5s;
+    text-align: center;
+    line-height: 60px;
     cursor: pointer;
 }
+#sponsor .list .image img {
+    width: auto;
+    height: 100%;
+}
+
+#sponsor .list .image:nth-child(9) img { width: 100%; height: auto; }
 
 #sponsor .list .image:hover { filter: grayscale(0%); transition: 0.3s; }
 #sponsor .list .image:nth-child(7n) { border-right: none; }
 #sponsor .list .image:nth-child(n+8) { border-bottom: none; }
-
-#sponsor .list .image:nth-child(1) { background-image: url(../images/sponsors/sponsor-1.png) }
-#sponsor .list .image:nth-child(2) { background-image: url(../images/sponsors/sponsor-2.png) }
-#sponsor .list .image:nth-child(3) { background-image: url(../images/sponsors/sponsor-3.png) }
-#sponsor .list .image:nth-child(4) { background-image: url(../images/sponsors/sponsor-4.png) }
-#sponsor .list .image:nth-child(5) { background-image: url(../images/sponsors/sponsor-5.png) }
-#sponsor .list .image:nth-child(6) { background-image: url(../images/sponsors/sponsor-6.png) }
-#sponsor .list .image:nth-child(7) { background-image: url(../images/sponsors/sponsor-7.png) }
-#sponsor .list .image:nth-child(8) { background-image: url(../images/sponsors/sponsor-8.png) }
-#sponsor .list .image:nth-child(9) { background-image: url(../images/sponsors/sponsor-9.png) }
-#sponsor .list .image:nth-child(10) { background-image: url(../images/sponsors/sponsor-10.png) }
-#sponsor .list .image:nth-child(11) { background-image: url(../images/sponsors/sponsor-11.png) }
-#sponsor .list .image:nth-child(12) { background-image: url(../images/sponsors/sponsor-12.png) }
-#sponsor .list .image:nth-child(13) { background-image: url(../images/sponsors/sponsor-13.png) }
-#sponsor .list .image:nth-child(14) { background-image: url(../images/sponsors/sponsor-14.png) }
-
