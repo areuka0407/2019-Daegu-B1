@@ -84,38 +84,44 @@
                     <div class="seat">C7</div>
                     <div class="seat">C8</div>
                 </div>
-                <form>
+                <form id="reserve-form" method="post">
                     <input type="hidden" id="seat_id" name="seat_id">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="movie_id">영화</label>
-                            <select name="movie_id" id="movie_id" class="form-control">
+                            <label class="d-inline" for="movie_id">영화</label>
+                            <small class="help-message text-danger ml-1"></small>
+                            <select name="movie_id" id="movie_id" class="form-control mt-2">
                                 <option value="">영화를 선택하세요</option>
                                 <option value="1">슈퍼맨</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="cinema_id">영화관</label>
-                            <select name="cinema_id" id="cinema_id" class="form-control">
+                            <label class="d-inline" for="cinema_id">영화관</label>
+                            <small class="help-message text-danger ml-1"></small>
+                            <select name="cinema_id" id="cinema_id" class="form-control mt-2">
                                 <option value="">영화관를 선택하세요</option>
                                 <option value="1">동네 CGV</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="user_name">이름</label>
-                            <input type="text" id="user_name" name="user_name" class="form-control">
+                            <label class="d-inline" for="user_name">이름</label>
+                            <small class="help-message text-danger ml-1"></small>
+                            <input type="text" id="user_name" name="user_name" class="form-control mt-2">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="password">비밀번호</label>
-                            <input type="password" id="password" name="password" class="form-control">
+                            <label class="d-inline" for="password">비밀번호</label>
+                            <small class="help-message text-danger ml-1"></small>
+                            <input type="password" id="password" name="password" class="form-control mt-2">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="user_phone">휴대폰 번호</label>
-                            <input type="text" id="user_phone" name="user_phone" class="form-control">
+                            <label class="d-inline" for="user_phone">전화 번호</label>
+                            <small class="help-message text-danger ml-1"></small>
+                            <input type="text" id="user_phone" name="user_phone" class="form-control mt-2">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="passconf">비밀번호 재확인</label>
-                            <input type="password" id="passconf" name="passconf" class="form-control">
+                            <label class="d-inline" for="passconf">비밀번호 재확인</label>
+                            <small class="help-message text-danger ml-1"></small>
+                            <input type="password" id="passconf" name="passconf" class="form-control mt-2">
                         </div>
                     </div>
 
@@ -127,15 +133,18 @@
     </div>
     <script defer>
         window.onload = function(){
-            const $seat_id = document.querySelector("#seat_id");
+            const $seat_id = $("#seat_id");
             document.querySelectorAll("#seat-map .seat").forEach(seat => {
+                /**
+                 * 좌석 선택
+                 */ 
                 seat.addEventListener("click", e => {
                     if(seat.classList.contains("reserved")) return;
 
                     const seat_id = seat.innerText;
 
                     // class toggle
-                    let selected = document.querySelector("#seat-map .seat.selected");
+                    let selected = $("#seat-map .seat.selected");
                     selected.classList.remove("selected");
                     seat.classList.add("selected");
 
@@ -147,6 +156,43 @@
                     else if(seat.classList.contains("premium")) toast(`프리미엄 좌석(${seat_id})을 선택하셨습니다.`);
                     else toast(`일반 좌석(${seat_id})을 선택하셨습니다.`);
                 });
+            });
+
+            /**
+             * Validator
+             */
+            const $form = $("#reserve-form");
+
+            let $movie_id = $("#movie_id");
+            let $cinema_id = $("#cinema_id");
+            let $user_name = $("#user_name");
+            let $user_phone = $("#user_phone");
+            let $password = $("#password");
+            let $passconf = $("#passconf");
+
+            $form.addEventListener("submit", e => {
+                e.preventDefault();
+
+                let result = true;
+                
+                // 영화
+                result &= $movie_id.value.trim() !== "" ? error($movie_id, "") : error($movie_id, "영화를 선택해 주십시오.");
+                // 영화관
+                result &= $cinema_id.value.trim() !== "" ? error($cinema_id, "") : error($cinema_id, "영화를 선택해 주십시오.");
+                // 이름
+                result &= $user_name.value.trim() !== "" ? error($user_name, "") : error($user_name, "이름을 기재해 주십시오.");
+                // 전화번호
+                result &= /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/.test($user_phone) ? error($user_phone, "") : error($user_phone, "올바른 형태의 휴대폰 번호가 아닙니다.");
+                // 비밀번호
+                result &= $password.value.trim() !== "" ? error($password, "") : error($password, "비밀번호를 기재해 주십시오.");
+                // 비밀번호 재확인
+                result &= $passconf.value.trim() !== "" ? error($passconf, "") : error($passconf, "비밀번호를 재확인해 주십시오.");
+
+
+                // 좌석 선택
+                result &= $seat_id.value.trim() === "" ? error() : error(null, "좌석을 선택해 주세요.");
+
+                if(result) $form.submit();
             });
         }
     </script>

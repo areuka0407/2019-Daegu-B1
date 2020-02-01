@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <script src="fontawesome/js/all.js" src="text/javascript"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/common.js" type="text/javascript" defer></script>
+    <script src="js/common.js" type="text/javascript"></script>
 </head>
 <body>
     <!-- 헤더 영역 -->
@@ -113,7 +113,7 @@
         </div>
     </div>
     <script defer>
-        const $ = (s) => document.querySelector(s);
+        
         window.onload = function(){
             const form = $("#request-screen-form");
             const business_id = $("#business_id");
@@ -122,10 +122,25 @@
             const running_time = $("#running_time");
             const movie_poster = $("#movie_poster");
 
+            const movie_name = $("#movie_name");
+            const company_name = $("#company_name");
+            const directory_name = $("#director_name");
+            
+
             form.addEventListener("submit", async e => {
                 e.preventDefault();
                 
                 let result = true;
+
+                // 영화명
+                result &= movie_name.value.trim() !== "" ? error(movie_name, "") : error(movie_name, "영화명을 기재해 주십시오.");
+
+                // 영화사명
+                result &= company_name.value.trim() !== "" ? error(company_name, "") : error(company_name, "영화사명을 기재해 주십시오.");
+
+                // 감독명
+                result &= directory_name.value.trim() !== "" ? error(directory_name, "") : error(directory_name, "감독명을 기재해 주십시오.");
+
                 // 사업자 등록 번호
                 result &= /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/.test(business_id.value) ? 
                         error(business_id, "") 
@@ -170,13 +185,6 @@
                     form.submit();
                 }
             }); 
-
-            function error(target, message){
-                let $message = target.previousElementSibling;
-                $message = !$message || !$message.classList.contains("help-message") ? target.parentElement.previousElementSibling : $message;
-                $message.innerText = message;
-                return message === "";
-            }
         };
     </script>
     <footer>
