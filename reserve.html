@@ -51,7 +51,6 @@
         </div>
     </div>
     <!-- 상영관 예약 영역 -->
-    <p class="toast-message active">슈퍼 프리미엄 좌석을 선택하셨습니다.</p>
     <div id="reserve">
         <div class="container">
             <div class="padding">     
@@ -131,6 +130,8 @@
             const $seat_id = document.querySelector("#seat_id");
             document.querySelectorAll("#seat-map .seat").forEach(seat => {
                 seat.addEventListener("click", e => {
+                    if(seat.classList.contains("reserved")) return;
+
                     const seat_id = seat.innerText;
 
                     // class toggle
