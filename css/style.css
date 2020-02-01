@@ -38,7 +38,8 @@ input[type='checkbox']:checked + .check-box {
 
 .toast-message {
     position: fixed;
-    bottom: 100px;
+    bottom: 50px;
+    opacity: 0.5;
     left: 50%;
     transform: translateX(-50%);
     padding: 15px 50px;
@@ -50,6 +51,11 @@ input[type='checkbox']:checked + .check-box {
     font-weight: 900;
     box-shadow: 0 0 10px 1px #00000050;
     transition: bottom 0.3s, opacity 0.5s;
+}
+
+.toast-message.active {
+    bottom: 100px;
+    opacity: 0.9;
 }
 
 .cover-image {

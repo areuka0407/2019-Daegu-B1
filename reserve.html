@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <script src="fontawesome/js/all.js" src="text/javascript"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js" type="text/javascript" defer></script>
 </head>
 <body>
      <!-- 헤더 영역 -->
@@ -50,7 +51,7 @@
         </div>
     </div>
     <!-- 상영관 예약 영역 -->
-    <p class="toast-message">슈퍼 프리미엄 좌석을 선택하셨습니다.</p>
+    <p class="toast-message active">슈퍼 프리미엄 좌석을 선택하셨습니다.</p>
     <div id="reserve">
         <div class="container">
             <div class="padding">     
@@ -125,6 +126,30 @@
             </div>
         </div>
     </div>
+    <script defer>
+        window.onload = function(){
+            const $seat_id = document.querySelector("#seat_id");
+            document.querySelectorAll("#seat-map .seat").forEach(seat => {
+                seat.addEventListener("click", e => {
+                    const seat_id = seat.innerText;
+
+                    // class toggle
+                    let selected = document.querySelector("#seat-map .seat.selected");
+                    selected.classList.remove("selected");
+                    seat.classList.add("selected");
+
+                    // change value
+                    $seat_id.value = seat_id;
+
+                    // 좌석에 따라서 메세지 알림
+                    if(seat.classList.contains("super-premium")) toast(`슈퍼 프리미엄 좌석(${seat_id})을 선택하셨습니다.`);
+                    else if(seat.classList.contains("premium")) toast(`프리미엄 좌석(${seat_id})을 선택하셨습니다.`);
+                    else toast(`일반 좌석(${seat_id})을 선택하셨습니다.`);
+                });
+            });
+        }
+    </script>
+
     <footer>
         <div class="container py-5">
             <div class="row align-items-start">
