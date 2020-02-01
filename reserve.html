@@ -163,12 +163,15 @@
              */
             const $form = $("#reserve-form");
 
-            let $movie_id = $("#movie_id");
-            let $cinema_id = $("#cinema_id");
-            let $user_name = $("#user_name");
-            let $user_phone = $("#user_phone");
-            let $password = $("#password");
-            let $passconf = $("#passconf");
+            const inputs = [
+                $("#movie_id"),
+                $("#cinema_id"),
+                $("#user_name"),
+                $("#user_phone"),
+                $("#password"),
+                $("#passconf")
+            ];
+
 
             $form.addEventListener("submit", e => {
                 e.preventDefault();

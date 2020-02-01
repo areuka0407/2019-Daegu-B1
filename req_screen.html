@@ -12,6 +12,7 @@
     <script src="fontawesome/js/all.js" src="text/javascript"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/Validator.js"></script>
 </head>
 <body>
     <!-- 헤더 영역 -->
@@ -116,75 +117,39 @@
         
         window.onload = function(){
             const form = $("#request-screen-form");
-            const business_id = $("#business_id");
-            const ceo_email = $("#ceo_email");
-            const ceo_phone = $("#ceo_phone");
-            const running_time = $("#running_time");
-            const movie_poster = $("#movie_poster");
 
-            const movie_name = $("#movie_name");
-            const company_name = $("#company_name");
-            const directory_name = $("#director_name");
-            
+            const inputs = [
+                $("#business_id"),
+                $("#ceo_email"),
+                $("#ceo_phone"),
+                $("#running_time"),
+                $("#movie_poster"),
+                $("#movie_name"),
+                $("#company_name"),
+                $("#director_name")
+            ];
 
-            form.addEventListener("submit", async e => {
-                e.preventDefault();
-                
-                let result = true;
+            const rules =  {
+                business_id: "business",
+                ceo_email: "email",
+                ceo_phone: "phone",
+                running_time: "number",
+                movie_poster: "image"
+            };
 
-                // 영화명
-                result &= movie_name.value.trim() !== "" ? error(movie_name, "") : error(movie_name, "영화명을 기재해 주십시오.");
+            const errors = {
+                business_id: "올바른 형태의 사업자등록번호가 아닙니다.",
+                ceo_email: "올바른 형태의 이메일이 아닙니다.",
+                ceo_phone: "올바른 형태의 전화번호가 아닙니다.",
+                running_time: "올바른 형태의 러닝타임이 아닙니다.",
+                movie_poster: "올바른 형태의 이미지 파일이 아닙니다.",
+                movie_name: "영화 명을 입력해 주십시오.",
+                company_name: "영화사 명을 입력해 주십시오.",
+                director_name: "감독 명을 입력해 주십시오."
+            };
 
-                // 영화사명
-                result &= company_name.value.trim() !== "" ? error(company_name, "") : error(company_name, "영화사명을 기재해 주십시오.");
-
-                // 감독명
-                result &= directory_name.value.trim() !== "" ? error(directory_name, "") : error(directory_name, "감독명을 기재해 주십시오.");
-
-                // 사업자 등록 번호
-                result &= /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/.test(business_id.value) ? 
-                        error(business_id, "") 
-                        : error(business_id, " 올바른 형태의 사업자등록번호가 아닙니다.");
-                
-                // 대표 이메일
-                result &= /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/.test(ceo_email.value) ? 
-                        error(ceo_email, "") 
-                        : error(ceo_email, " 올바른 형태의 이메일이 아닙니다.");
-
-                // 대표 전화번호
-                result &= /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/.test(ceo_phone.value) ? 
-                        error(ceo_phone, "") 
-                        : error(ceo_phone, " 올바른 형태의 전화번호가 아닙니다.");
-
-                // 러닝 타임 (분 기준)
-                result &= /^[0-9]+$/.test(running_time.value) ? 
-                        error(running_time, "") 
-                        : error(running_time, " 올바른 형태의 러닝타임이 아닙니다.");
-
-                // 포스터 이미지
-                let file = movie_poster.files;
-                if(!file || !file[0]) result &= error(movie_poster, "올바른 형태의 이미지 파일이 아닙니다."); // 이미지가 업로드 되지 않았을 경우
-                else {
-                    file = file[0];
-
-                    let img = await(function(){
-                        return new Promise(res => {
-                            // 이미지가 로딩에 성공하면 올바른 이미지라고 판단
-                            let img = document.createElement("img");
-                            img.src = URL.createObjectURL(file);
-
-                            img.onload = () => res(img);
-                            img.onerror = () => res(false);
-                        });
-                    })();
-
-                    result &= img ? error(movie_poster, "") : error(movie_poster, " 올바른 형태의 이미지 파일이 아닙니다.");
-                }
-                
-                if(result){ 
-                    form.submit();
-                }
-            }); 
+            let v = new Validator({form, inputs, rules, errors});
+            v.start();
         };
     </script>
     <footer>

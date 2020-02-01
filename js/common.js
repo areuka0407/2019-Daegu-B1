@@ -1,4 +1,3 @@
-
 /**
  * 질의자
  */
@@ -56,3 +55,14 @@ function error(target = null , message = null){
     }
     return !message;
 }
+
+
+window.addEventListener("load", () => {
+    document.querySelector(".custom-file-input").addEventListener("change", e => {
+        if(e.target.files.length > 0){
+            let parent = e.target.parentElement;
+            let label = parent.querySelector(".custom-file-label");
+            label.innerText = e.target.files[0].name;
+        }
+    }); 
+});
