@@ -21,8 +21,8 @@
             </a>
             <div class="nav">
                 <a class="item" href="index.html">부산국제영화제</a>
-                <a class="item active" href="sub_about.html">영화제 소개</a>
-                <a class="item" href="req_screen.html">상영 요청</a>
+                <a class="item" href="sub_about.html">영화제 소개</a>
+                <a class="item active" href="req_screen.html">상영 요청</a>
                 <a class="item" href="#">상영작 예매</a>
             </div>
             <div class="sub-nav">
@@ -36,9 +36,9 @@
             <h5>
                 <span class="home">BIFF 2020</span>
                 <i class="right-icon white"></i>
-                About
+                Request Screen
             </h5>
-            <h3>영화제 소개</h3>
+            <h3>상영 요청</h3>
         </div>
     </div>
     <!-- 소개 영역 -->
@@ -46,43 +46,49 @@
         <div class="container">
             <div class="padding">     
                 <div class="section-title">
-                    <span class="behind">B</span>
-                    <h1>BIFF <span class="accent">2020</span></h1>
+                    <span class="behind">R</span>
+                    <h1>Request <span class="accent">FORM</span></h1>
                 </div>
-                <div class="row">
-                    <div class="column col-md-6 col-sm-12">
-                        <div class="detail">
-                            <b class="title">부산국제영화제는?</b>
-                            부산국제영화제는 1996년 제1회를 시작으로 2018년 제23회를 맞이한, 부산 지역을 넘어 한국 영화계의 최대 축제이다. 
-                            현재는 도쿄국제영화제, 상하이국제영화제와 함께 어깨를 나란히 하는 아시아권의 중요한 영화제로 자리잡았다. 
-                            부산광역시 해운대구 우동 센텀시티 일원에서 매년 10월 초에 개최되어 10일간 진행한다. 
-                            당시 문공부 기획관리실에 있던 김동호 당시 집행위원장이 영화진흥공사장에 취임하면서 작지만 권위 있는 영화제를 만들자는 취지로 추진, 
-                            전양준 부위원장과 김지석 수석 프로그래머[4]의 주도로 만들었다.
+                <div class="col-md-6 col-sm-12 mx-auto">
+                    <form>
+                        <div class="form-group">
+                            <label for="company_name">영화사명</label>
+                            <input type="text" id="company_name" name="company_name" class="form-control">
                         </div>
-                        <div class="image">
-                            <img src="images/14856.jpg" title="영화제 이미지" alt="영화제 이미지">
+                        <div class="form-group">
+                            <label for="business_id">사업자 등록 번호</label>
+                            <input type="text" id="business_id" name="business_id" class="form-control">
                         </div>
-                    </div>
-                    <div class="column col-md-6 col-sm-12">
-                        <div class="image">
-                            <img src="images/img_overview.jpg" title="영화제 이미지" alt="영화제 이미지">
+                        <div class="form-group">
+                            <label for="ceo_email">영화사 대표 이메일</label>
+                            <input type="text" id="ceo_email" name="ceo_email" class="form-control">
                         </div>
-                        <div class="detail">
-                            <b class="title">내세우는 상징성</b>
-                            초청영화들은 장르에 구애되지 않고 다양하게 선정한다는 것이 BIFF가 내세우는 상징성이다. 
-                            즉 할리우드 제작 영화에서부터 칸·베를린·선댄스영화제 수상작, 애니메이션 외에도. 독립영화, 예술영화, 단편영화 등의 영화들도 초청의 대상이다.
-                            개·폐막작을 제외한 모든 영화는 2회 상영이 기본이며 개막일에는 개막작 이외엔 상영하지 않는다.[5] 야외 상영은 하루에 한번, 20시에 상영한다.
+                        <div class="form-group">
+                            <label for="ceo_phone">영화사 대표 전화번호</label>
+                            <input type="text" id="ceo_phone" name="ceo_phone" class="form-control">
                         </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="padding">
-                <div class="sub-title mb-5">
-                    <h1>Way to Come</h1>
-                    <h5>오시는 길</h5>
-                </div>
-                <img class="d-block mx-auto mt-5" src="images/map.png" title="지도" alt="지도">
+                        <div class="form-group">
+                            <label for="movie_name">영화명</label>
+                            <input type="text" id="movie_name" name="movie_name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="director_name">감독명</label>
+                            <input type="text" id="director_name" name="director_name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="running_time">러닝 타임</label>
+                            <input type="text" id="running_time" name="running_time" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="movie_poster">영화 포스터</label>
+                            <div class="custom-file">
+                                <label for="movie_poster" class="custom-file-label"></label>
+                                <input type="file" id="movie_poster" name="movie_poster" class="custom-file-input">
+                            </div>
+                        </div>
+                        <button class="btn btn-dark mt-5">등록 신청</button>
+                    </form>
+                </form>
             </div>
         </div>
     </div>

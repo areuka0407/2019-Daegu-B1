@@ -19,11 +19,16 @@ a { text-decoration: none; }
 ol, ul { list-style: none; }
 :any-link, :any-link:hover { color: inherit; }
 
+.w-100 { width: 100%; }
+
 .cover-image {
     background-size: cover;
     background-position: center 50%;
     background-repeat: no-repeat;
 }
+
+.custom-file-label::after { content: "찾아보기" }
+
 .padding {
     padding: 50px 0 80px;
 }
@@ -83,6 +88,13 @@ i.right-icon.white {
     margin-left: -25px; margin-top: -5px;
     width: 50px; height: 2px;
     background-color: #808080;
+}
+
+.sub-title h5 {
+    margin-top: 5px;
+    font-size: 1em;
+    font-weight: 900;
+    color: #505050;
 }
 
 /* 헤더
@@ -152,7 +164,7 @@ header {
     opacity: 0.6;
 }
 
-#visual > .main, #visual > .sub
+#visual.main > div, #visual.sub > div
 {
     z-index: 1;
     position: relative;
@@ -161,27 +173,27 @@ header {
     margin: 0 auto;
     color: #fff;
 }
-#visual .main h1 { 
+#visual.main h1 { 
     margin-bottom: 0.8em;
     font-size: 3em;
     font-family: var(--font-english);
     font-weight: lighter;
 }
-#visual .main h1 span {
+#visual.main h1 span {
     font-family: var(--font-english);
     font-weight: bold;
 }
 
-#visual .main .description {
+#visual.main .description {
     color: #fffd;
     font-weight: normal;
 }
 
-#visual .main .description span {
+#visual.main .description span {
     font-weight: bolder; font-size: 1.1em; margin-right: 0.2em; 
 }
 
-#visual .main a {
+#visual.main a {
     margin-top: 30px;
     display: inline-block;
     padding: 10px 20px;
@@ -189,20 +201,31 @@ header {
     font-weight: 900;
 }
 
-#visual .main a:hover {
+#visual.main a:hover {
     text-decoration: none;
     background-color: #fff;
     color: var(--sub);
 }
 
-#visual .sub h5 {
+#visual.sub { height: 300px; }
+
+#visual.sub > div {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#visual.sub h5 {
     font-family: var(--font-english);
     font-size: 1.1em;
     font-size: normal;
     color: #ccc;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
-#visual .sub h5 .home {
+#visua .sub h5 .home {
     font-weight: bold;
     color: #fff;
 }
@@ -253,6 +276,10 @@ footer .copy-right {
 /* About
 */
 
+#about {
+    position: relative;
+}
+
 #about .list {
     margin-top: 40px;
     display: flex;
@@ -281,6 +308,39 @@ footer .copy-right {
     margin-left: -50px;
     background-color: #909090;
 }
+
+#about .detail {
+    line-height: 2em;
+    color: #505050;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 40px 0;
+}
+
+#about .detail b {
+    display: block;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--darkblue);
+}
+
+#about .image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 5px #00000050;
+}
+
+#about .image img {
+    position: absolute;
+}
+
+#about .column:nth-child(1) .image { margin-top: 50px; }
+#about .column:nth-child(1) .image img { height: 100%; }
+#about .column:nth-child(2) .image { margin-bottom: 80px; }
+#about .column:nth-child(2) .image img { width: 100%; }
+
 
 
 /* Sponsor
