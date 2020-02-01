@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 헤더 영역 -->
-    <header>
+     <!-- 헤더 영역 -->
+     <header>
         <div class="container d-flex justify-content-between align-items-center">
             <a href="index.html" id="logo">
                 <img src="images/logo.png" title="부산국제영화제" alt="부산국제영화제" height="80">
@@ -23,13 +23,13 @@
                 <div class="item">
                     <a href="index.html">부산국제영화제</a>
                 </div>
-                <div class="item active">
+                <div class="item">
                     <a href="sub_about.html">영화제 소개</a>
                 </div>
                 <div class="item">
                     <a href="req_screen.html">상영 요청</a>
                 </div>
-                <div class="item">
+                <div class="item active">
                     <a href="reserve.html">상영작 예매</a>
                 </div>
             </div>
@@ -44,53 +44,84 @@
             <h5>
                 <span class="home">BIFF 2020</span>
                 <i class="right-icon white"></i>
-                About
+                Request Screen
             </h5>
-            <h3>영화제 소개</h3>
+            <h3>상영 요청</h3>
         </div>
     </div>
-    <!-- 소개 영역 -->
-    <div id="about">
+    <!-- 상영관 예약 영역 -->
+    <p class="toast-message">슈퍼 프리미엄 좌석을 선택하셨습니다.</p>
+    <div id="reserve">
         <div class="container">
             <div class="padding">     
                 <div class="section-title">
-                    <span class="behind">B</span>
-                    <h1>BIFF <span class="accent">2020</span></h1>
+                    <span class="behind">R</span>
+                    <h1>RESERVE <span class="accent">SCREEN</span></h1>
                 </div>
-                <div class="row">
-                    <div class="column col-md-6 col-sm-12">
-                        <div class="detail">
-                            <b class="title">부산국제영화제는?</b>
-                            부산국제영화제는 1996년 제1회를 시작으로 2018년 제23회를 맞이한, 부산 지역을 넘어 한국 영화계의 최대 축제이다. 
-                            현재는 도쿄국제영화제, 상하이국제영화제와 함께 어깨를 나란히 하는 아시아권의 중요한 영화제로 자리잡았다. 
-                            부산광역시 해운대구 우동 센텀시티 일원에서 매년 10월 초에 개최되어 10일간 진행한다. 
-                            당시 문공부 기획관리실에 있던 김동호 당시 집행위원장이 영화진흥공사장에 취임하면서 작지만 권위 있는 영화제를 만들자는 취지로 추진, 
-                            전양준 부위원장과 김지석 수석 프로그래머[4]의 주도로 만들었다.
+                <div id="seat-map">
+                    <div class="seat super-premium">1A</div>
+                    <div class="seat super-premium reserved">2A</div>
+                    <div class="seat super-premium reserved">3A</div>
+                    <div class="seat super-premium">4A</div>
+                    <div class="seat super-premium selected">5A</div>
+                    <div class="seat super-premium reserved">6A</div>
+                    <div class="seat super-premium">7A</div>
+                    <div class="seat super-premium">8A</div>
+                    <div class="seat premium">B1</div>
+                    <div class="seat premium">B2</div>
+                    <div class="seat premium">B3</div>
+                    <div class="seat premium">B4</div>
+                    <div class="seat premium">B5</div>
+                    <div class="seat premium">B6</div>
+                    <div class="seat premium">B7</div>
+                    <div class="seat premium">B8</div>
+                    <div class="seat">C1</div>
+                    <div class="seat">C2</div>
+                    <div class="seat">C3</div>
+                    <div class="seat">C4</div>
+                    <div class="seat">C5</div>
+                    <div class="seat">C6</div>
+                    <div class="seat">C7</div>
+                    <div class="seat">C8</div>
+                </div>
+                <form>
+                    <input type="hidden" id="seat_id" name="seat_id">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="movie_id">영화</label>
+                            <select name="movie_id" id="movie_id" class="form-control">
+                                <option value="">영화를 선택하세요</option>
+                                <option value="1">슈퍼맨</option>
+                            </select>
                         </div>
-                        <div class="image">
-                            <img src="images/14856.jpg" title="영화제 이미지" alt="영화제 이미지">
+                        <div class="form-group col-md-6">
+                            <label for="cinema_id">영화관</label>
+                            <select name="cinema_id" id="cinema_id" class="form-control">
+                                <option value="">영화관를 선택하세요</option>
+                                <option value="1">동네 CGV</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="user_name">이름</label>
+                            <input type="text" id="user_name" name="user_name" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="user_phone">휴대폰 번호</label>
+                            <input type="text" id="user_phone" name="user_phone" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="passconf">비밀번호 재확인</label>
+                            <input type="password" id="passconf" name="passconf" class="form-control">
                         </div>
                     </div>
-                    <div class="column col-md-6 col-sm-12">
-                        <div class="image">
-                            <img src="images/img_overview.jpg" title="영화제 이미지" alt="영화제 이미지">
-                        </div>
-                        <div class="detail">
-                            <b class="title">내세우는 상징성</b>
-                            초청영화들은 장르에 구애되지 않고 다양하게 선정한다는 것이 BIFF가 내세우는 상징성이다. 
-                            즉 할리우드 제작 영화에서부터 칸·베를린·선댄스영화제 수상작, 애니메이션 외에도. 독립영화, 예술영화, 단편영화 등의 영화들도 초청의 대상이다.
-                            개·폐막작을 제외한 모든 영화는 2회 상영이 기본이며 개막일에는 개막작 이외엔 상영하지 않는다.[5] 야외 상영은 하루에 한번, 20시에 상영한다.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="padding">
-                <div class="sub-title mb-5">
-                    <h1>Way to Come</h1>
-                    <h5>오시는 길</h5>
-                </div>
-                <img class="d-block mx-auto mt-5" src="images/map.png" title="지도" alt="지도">
+
+                    <button class="btn btn-dark mt-5 px-5 py-2">상영 요청</button>
+                </form>
+
             </div>
         </div>
     </div>
@@ -119,7 +150,7 @@
                         </div>
                         <div class="item">
                             <i class="right-icon white"></i>
-                            <a href="#">상영작 예매</a>
+                            <a href="reserve.html">상영작 예매</a>
                         </div>
                     </div>
                 </div>
