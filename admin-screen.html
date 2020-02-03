@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin.css">
     <script src="js/common.js" type="text/javascript" defer></script>
+    <script src="js/Validator.js" type="text/javascript"></script>
 </head>
 <body>
      <!-- 헤더 영역 -->
@@ -43,7 +44,7 @@
         </div>
     </header>
     <!-- 상영 등록 영역 -->
-    <div id="request-screen">
+    <div id="admin-screen">
         <div class="container padding">
             <div class="section-title">
                 <span class="behind">M</span>
@@ -99,8 +100,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="derector">감독명</label>
-                            <input type="text" id="derector" name="derector" class="form-control">
+                            <label for="director">감독명</label>
+                            <input type="text" id="director" name="director" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="running_time">러닝타임</label>
@@ -112,5 +113,32 @@
             </div>
         </div>
     </div>
+    <script defer>
+        window.addEventListener("load", () => {
+            let form = document.querySelector("#admin-screen form");
+
+            let inputs = [
+                $("#movie_name"),
+                $("#movie_poster"),
+                $("#director"),
+                $("#running_time")
+            ];
+
+            let rules = {
+                movie_poster: "image",
+                running_time: "number"
+            };  
+
+            let errors = {
+                movie_name: "영화 제목을 입력하세요.",
+                movie_poster: "올바른 형태의 이미지 파일이 아닙니다.",
+                director: "감독명을 입력해세요.",
+                running_time: "올바른 형태의 러닝타임이 아닙니다.",
+            }
+
+            let v = new Validator({form, inputs, rules, errors});
+            v.start();
+        });
+    </script>
 </body>
 </html>

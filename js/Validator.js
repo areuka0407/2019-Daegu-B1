@@ -48,7 +48,7 @@ class Validator {
                 if(this[rule]) typeCheck = await this[rule]($input);
                 
 
-                if(typeCheck && emptyCheck) error($input, "");
+                if(typeCheck && emptyCheck) error($input);
                 else error($input, this.errors[name]);
             
 

@@ -48,7 +48,7 @@ this.toast = function(message, background = "bg-red"){
  * 에러 메세지 출력
  */
 
-function error(target = null , message = null){
+function error(target = null , message = []){
     let container = target ? jQuery(target).closest(".form-group") : null;  
     container && container[0].querySelectorAll(".error-message").forEach(x => x.remove());  // 기존의 메세지를 모두 삭제한다.
     
@@ -57,14 +57,14 @@ function error(target = null , message = null){
     if(target && container && message){
         let label = container[0].querySelector("label");        // 가장 첫번째 레이블을 찾는다
         message = Array.isArray(message) ? message : [message]; // 메세지가 배열이 아니면 배열로 바꾼다.
-        message.forEach(msg => {
+        message.reverse().forEach(msg => {
             let output = document.createElement("small");       // message의 개수만큼 메세지 노드를 생성한다.
             output.classList.add("error-message");
             output.innerText = msg;
             label.after(output);                                // 레이블 뒤에 끼워넣는다.
         });
     }
-    return !message;
+    return message.length === 0; // 에러 메세지가 없으면 TRUE
 }
 
 

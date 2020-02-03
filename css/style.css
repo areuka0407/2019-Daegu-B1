@@ -105,7 +105,9 @@ input[type='checkbox']:checked + .check-box {
 */
 
 .error-message {
-    margin-left: 10px;
+    display: block;
+    margin-top: -0.4em;
+    margin-bottom: 0.8em;
     color: var(--red);
 }
 

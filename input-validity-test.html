@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="text" id="password" name="password">
+        </div>
+        <button type="submit">로그인</button>
+    </form>
+
+    <script>
+        window.addEventListener("load", () => {
+            let form = document.querySelector("form");
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+
+                let i_email = document.querySelector("#email");
+                let i_password = document.querySelector("#password");
+
+                console.log(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/.test(i_email.value), /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/.test(i_email.value));
+                let check = true;
+                if(!/^(?=.*[a-zA-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]{8,}$/.test(i_password.value)){
+                    console.log("비밀번호 오류");
+                    i_password.setCustomValidity("영문/숫자 조합으로 8자 이상 작성하시기 바랍니다.")
+                    check = false;
+                }
+                if(!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/.test(i_email.value)){
+                    console.log("이메일 오류");
+                    i_email.setCustomValidity("이메일 형식으로 작성해 주시기 바랍니다.")
+                    check = false;
+                }
+
+                // if(check) form.submit();
+            }); 
+        });
+    </script>
+</body>
+</html>
