@@ -49,9 +49,13 @@ this.toast = function(message){
 
 function error(target = null , message = null){
     if(target){
-        let $message = target.previousElementSibling;
-        $message = !$message || !$message.classList.contains("help-message") ? target.parentElement.previousElementSibling : $message;
-        $message.innerText = message;
+        let $output = target;
+        if(target.nodeName === "INPUT"){
+            $output = target.previousElementSibling;
+            $output = !$output || !$output.classList.contains("help-message") ? target.parentElement.previousElementSibling : $output;
+        }
+        
+        $output.innerText = message;
     }
     return !message;
 }

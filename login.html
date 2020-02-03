@@ -1,4 +1,4 @@
-va<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +70,6 @@ va<!DOCTYPE html>
                         <small class="help-message text-danger d-inline ml-1"></small>
                         <input type="password" id="password" name="password" class="form-control">
                     </div>
-                    <small class="help-message text-danger"></small>
                     <div class="d-flex justify-content-between align-items-center mt-5">
                         <button class="btn btn-dark px-5 py-2">로그인</button>
                         <div>
@@ -89,9 +88,12 @@ va<!DOCTYPE html>
             let form = document.querySelector("#login form");
             let message = form.querySelector(".help-message");
 
+            const $user_id = $("#user_id")
+            const $password = $("#password");
+
             const inputs = [
-                $("#user_id"),
-                $("#password")
+                $user_id,
+                $password,
             ];
 
             const errors = {
@@ -99,14 +101,14 @@ va<!DOCTYPE html>
                 password: "비밀번호를 입력해주세요."
             };
 
-            const v = new Validator({form, inputs, errors});
+            const final = () => {
+                let result = $user_id.value.trim() === "" && $password.value.trim() === "";
+                if(result) toast("아이디 및 비밀번호를 입력주세요.");
+                return !result;
+            };
+
+            const v = new Validator({form, inputs, errors, final});
             v.start();
-
-            form.addEventListener("submit", e => {
-                e.preventDefault();
-
-                
-            });
         };
     </script>
     <!-- 푸터 -->
