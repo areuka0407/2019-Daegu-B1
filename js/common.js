@@ -9,7 +9,7 @@ const $ = (s) => document.querySelector(s);
  * 토스트 메세지
  */
 let $box = null;
-this.toast = function(message){
+this.toast = function(message, background = "bg-red"){
     if($box){
         this.clearTimeout(this.animateQueue);
         $box.style.transition = "0.5s";
@@ -25,6 +25,7 @@ this.toast = function(message){
 
     $box = document.createElement("div");
     $box.classList.add("toast-message");
+    $box.classList.add(background);
     $box.innerText = message;
 
     this.document.body.append($box);
@@ -48,14 +49,20 @@ this.toast = function(message){
  */
 
 function error(target = null , message = null){
-    if(target){
-        let $output = target;
-        if(target.nodeName === "INPUT"){
-            $output = target.previousElementSibling;
-            $output = !$output || !$output.classList.contains("help-message") ? target.parentElement.previousElementSibling : $output;
-        }
-        
-        $output.innerText = message;
+    let container = target ? jQuery(target).closest(".form-group") : null;  
+    container && container[0].querySelectorAll(".error-message").forEach(x => x.remove());  // 기존의 메세지를 모두 삭제한다.
+    
+    // target: input 노드, container: form-group 노드, message: 출력할 메세지
+    // 위 사항이 모두 존재할 때만 실행한다.
+    if(target && container && message){
+        let label = container[0].querySelector("label");        // 가장 첫번째 레이블을 찾는다
+        message = Array.isArray(message) ? message : [message]; // 메세지가 배열이 아니면 배열로 바꾼다.
+        message.forEach(msg => {
+            let output = document.createElement("small");       // message의 개수만큼 메세지 노드를 생성한다.
+            output.classList.add("error-message");
+            output.innerText = msg;
+            label.after(output);                                // 레이블 뒤에 끼워넣는다.
+        });
     }
     return !message;
 }

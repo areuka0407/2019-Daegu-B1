@@ -64,7 +64,7 @@
                     <div class="seat super-premium reserved">2A</div>
                     <div class="seat super-premium reserved">3A</div>
                     <div class="seat super-premium">4A</div>
-                    <div class="seat super-premium selected">5A</div>
+                    <div class="seat super-premium">5A</div>
                     <div class="seat super-premium reserved">6A</div>
                     <div class="seat super-premium">7A</div>
                     <div class="seat super-premium">8A</div>
@@ -90,7 +90,6 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="d-inline" for="movie_id">영화</label>
-                            <small class="help-message text-danger ml-1"></small>
                             <select name="movie_id" id="movie_id" class="form-control mt-2">
                                 <option value="">영화를 선택하세요</option>
                                 <option value="1">슈퍼맨</option>
@@ -98,7 +97,6 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="d-inline" for="cinema_id">영화관</label>
-                            <small class="help-message text-danger ml-1"></small>
                             <select name="cinema_id" id="cinema_id" class="form-control mt-2">
                                 <option value="">영화관를 선택하세요</option>
                                 <option value="1">동네 CGV</option>
@@ -106,22 +104,18 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="d-inline" for="user_name">이름</label>
-                            <small class="help-message text-danger ml-1"></small>
                             <input type="text" id="user_name" name="user_name" class="form-control mt-2">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="d-inline" for="password">비밀번호</label>
-                            <small class="help-message text-danger ml-1"></small>
                             <input type="password" id="password" name="password" class="form-control mt-2">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="d-inline" for="user_phone">전화 번호</label>
-                            <small class="help-message text-danger ml-1"></small>
                             <input type="text" id="user_phone" name="user_phone" class="form-control mt-2">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="d-inline" for="passconf">비밀번호 재확인</label>
-                            <small class="help-message text-danger ml-1"></small>
                             <input type="password" id="passconf" name="passconf" class="form-control mt-2">
                         </div>
                     </div>
@@ -147,16 +141,18 @@
 
                     // class toggle
                     let selected = $("#seat-map .seat.selected");
-                    selected.classList.remove("selected");
+                    selected && selected.classList.remove("selected");
                     seat.classList.add("selected");
 
                     // change value
                     $seat_id.value = seat_id;
 
                     // 좌석에 따라서 메세지 알림
-                    if(seat.classList.contains("super-premium")) toast(`슈퍼 프리미엄 좌석(${seat_id})을 선택하셨습니다.`);
-                    else if(seat.classList.contains("premium")) toast(`프리미엄 좌석(${seat_id})을 선택하셨습니다.`);
-                    else toast(`일반 좌석(${seat_id})을 선택하셨습니다.`);
+                    let message;
+                    if(seat.classList.contains("super-premium"))  message = `슈퍼 프리미엄 좌석(${seat_id})을 선택하셨습니다.`;
+                    else if(seat.classList.contains("premium")) message = `프리미엄 좌석(${seat_id})을 선택하셨습니다.`;
+                    else message = `일반 좌석(${seat_id})을 선택하셨습니다.`;
+                    toast(message, "bg-dark");
                 });
             });
 
