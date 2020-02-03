@@ -22,11 +22,12 @@ class Validator {
      * Initial
      */
 
-    constructor({form, inputs, rules, errors}){
+    constructor({form, inputs = [], rules = {}, errors = {}, final = () => true}){
         this.$form = typeof form === "string" ? document.querySelector(form) : form;
         this.inputs = inputs.map(x => typeof x === "string" ? document.querySelector(x) : x);
         this.$rules = rules;
         this.errors = errors;
+        this.final = final;
     }
 
     /**
@@ -53,6 +54,8 @@ class Validator {
 
                 result &= (typeCheck && emptyCheck);
             }
+
+            result &= this.final();
 
             if(result) this.$form.submit();
         }); 

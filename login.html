@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+va<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@
     <script src="fontawesome/js/all.js" src="text/javascript"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/common.js" type="text/javascript" defer></script>
+    <script src="js/Validator.js" type="Text/javascript"></script>
 </head>
 <body>
     <!-- 헤더 영역 -->
@@ -61,12 +62,15 @@
                 <form>
                     <div class="form-group">
                         <label for="user_id">아이디</label>
-                        <input type="text" id="user_id" class="form-control">
+                        <small class="help-message text-danger d-inline ml-1"></small>
+                        <input type="text" id="user_id" name="user_id" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">비밀번호</label>
-                        <input type="password" id="password" class="form-control">
+                        <small class="help-message text-danger d-inline ml-1"></small>
+                        <input type="password" id="password" name="password" class="form-control">
                     </div>
+                    <small class="help-message text-danger"></small>
                     <div class="d-flex justify-content-between align-items-center mt-5">
                         <button class="btn btn-dark px-5 py-2">로그인</button>
                         <div>
@@ -79,6 +83,33 @@
             </div>
         </div>
     </div>
+    <!-- SCRIPT -->
+    <script defer>
+        window.onload = function(){
+            let form = document.querySelector("#login form");
+            let message = form.querySelector(".help-message");
+
+            const inputs = [
+                $("#user_id"),
+                $("#password")
+            ];
+
+            const errors = {
+                user_id: "아이디를 입력해주세요",
+                password: "비밀번호를 입력해주세요."
+            };
+
+            const v = new Validator({form, inputs, errors});
+            v.start();
+
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+
+                
+            });
+        };
+    </script>
+    <!-- 푸터 -->
     <footer>
         <div class="container py-5">
             <div class="row align-items-start">

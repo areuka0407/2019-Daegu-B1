@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <script src="fontawesome/js/all.js" src="text/javascript"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/Validator.js" type="text/javascript"></script>
     <script src="js/common.js" type="text/javascript" defer></script>
 </head>
 <body>
@@ -133,6 +134,7 @@
     </div>
     <script defer>
         window.onload = function(){
+            const form = $("#reserve-form");
             const $seat_id = $("#seat_id");
             document.querySelectorAll("#seat-map .seat").forEach(seat => {
                 /**
@@ -161,10 +163,8 @@
             /**
              * Validator
              */
-            const $form = $("#reserve-form");
 
             const inputs = [
-                $seat_id,
                 $("#movie_id"),
                 $("#cinema_id"),
                 $("#user_name"),
@@ -173,13 +173,11 @@
                 $("#passconf")
             ];
 
-            const ruels = {
+            const rules = {
                 user_phone: "phone",
-
             }
 
             const errors = {
-                seat_id: "좌석을 선택해 주세요.",
                 movie_id: "영화를 선택해 주세요.",
                 cinema_id: "영화관을 선택해 주세요.",
                 user_name: "이름을 입력해 주세요.",
@@ -188,7 +186,15 @@
                 passconf: "비밀번호 확인을 입력해 주세요."
             };
 
-            const v = new Validator({form, inputs, rules, errors});
+
+            const final = () => {
+                if($seat_id.value === "") toast("좌석을 선택해 주세요");
+                return $seat_id.value === "";
+            };
+
+
+            const v = new Validator({form, inputs, rules, errors, final});
+            v.start();
 
 
 
