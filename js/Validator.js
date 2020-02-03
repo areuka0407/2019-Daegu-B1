@@ -1,6 +1,6 @@
 class Validator {
     /**
-     * Invalid Case
+     * Checking Types
      */
     email = ({value}) => /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/.test(value);
     business = ({value}) => /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/.test(value);
@@ -18,13 +18,20 @@ class Validator {
         }
     });
 
+    /**
+     * Initial
+     */
+
     constructor({form, inputs, rules, errors}){
         this.$form = typeof form === "string" ? document.querySelector(form) : form;
         this.inputs = inputs.map(x => typeof x === "string" ? document.querySelector(x) : x);
         this.$rules = rules;
         this.errors = errors;
-
     }
+
+    /**
+     * Check Start
+     */
 
     start(){
         this.$form.addEventListener("submit", async e => {
@@ -35,8 +42,8 @@ class Validator {
                 const {value, name} = $input;
                 const rule = this.$rules[name];
                 
-                let emptyCheck = rule === "image" ? true : value.trim().length > 0;
-                let typeCheck = true;
+                let emptyCheck = rule === "image" ? true : value.trim().length > 0; // 값이 비어있는지 체크
+                let typeCheck = true;                                               // 타입이 일치하는지 체크
                 if(this[rule]) typeCheck = await this[rule]($input);
                 
 

@@ -164,6 +164,7 @@
             const $form = $("#reserve-form");
 
             const inputs = [
+                $seat_id,
                 $("#movie_id"),
                 $("#cinema_id"),
                 $("#user_name"),
@@ -172,6 +173,27 @@
                 $("#passconf")
             ];
 
+            const ruels = {
+                user_phone: "phone",
+
+            }
+
+            const errors = {
+                seat_id: "좌석을 선택해 주세요.",
+                movie_id: "영화를 선택해 주세요.",
+                cinema_id: "영화관을 선택해 주세요.",
+                user_name: "이름을 입력해 주세요.",
+                user_phone: "올바른 형태의 휴대폰 번호가 아닙니다.",
+                password: "비밀번호를 입력해 주세요.",
+                passconf: "비밀번호 확인을 입력해 주세요."
+            };
+
+            const v = new Validator({form, inputs, rules, errors});
+
+
+
+            /*
+            Validator 사용 없이 하는 것
 
             $form.addEventListener("submit", e => {
                 e.preventDefault();
@@ -197,6 +219,7 @@
 
                 if(result) $form.submit();
             });
+            */
         }
     </script>
 
